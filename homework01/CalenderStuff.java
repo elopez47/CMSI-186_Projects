@@ -245,21 +245,7 @@ public class CalendarStuff {
    */
    public static long daysBetween( long month1, long day1, long year1, long month2, long day2, long year2 ) {
       long dayCount = 0;
-
-      if ( dateEquals( long month1, long day1, long year1, long month2, long day2, long year2 ) ) {
-
-        return dayCount;
-
-      } else if ( compareDate( long month1, long day1, long year1, long month2, long day2, long year2 ) == 1 ) {
-        int i;
-
-        return dayCount;
-
-      } else {
-
-        return dayCount;
-
-      }
+      return dayCount = 0;
 
    }
 
