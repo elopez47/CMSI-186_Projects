@@ -29,7 +29,7 @@ public class StringStuff {
    */
    public static boolean containsVowel( String s ) {
 
-     s.toLowerCase();
+     s = s.toLowerCase();
 
      for ( int i = 0; i < s.length() ; i++ ) {
 
@@ -57,14 +57,41 @@ public class StringStuff {
    */
    public static boolean isPalindrome( String s ) {
 
-     s.toLowerCase();
+     s = s.toLowerCase();
 
-     for ( int i = 0; i < s.length() ; i++ ) {
-       for ( int j = s.length() ; i >= 0 ; i-- ) {
+     if ( s.length() == 1 || s.length() == 0 ) {
 
+       return true;
+
+     } else if ( s.length() % 2 == 0) {
+
+       int j = s.length() - 1;
+
+       for ( int i = 0; i < ( s.length() / 2 ) ; i++ ) {
+
+         if ( s.charAt(i) != s.charAt(j) ) {
+           return false;
+         }
+
+        j = j - 1;
        }
+
+     } else {
+
+       int j = s.length() - 1;
+
+       for ( int i = 0; i <= (( s.length() + 1 ) / 2 - 1); i++ ) {
+
+         if ( s.charAt(i) != s.charAt(j) ) {
+           return false;
+         }
+
+         j = j - 1;
+       }
+
      }
-     return false;
+
+     return true;
    }
 
   /**
@@ -76,7 +103,24 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input
    */
    public static String evensOnly( String s ) {
-      return new String( "HJHJHJ" );
+
+     s = s.toLowerCase();
+
+     String result = "";
+
+     for ( int i = 0; i < s.length() ; i++ ) {
+
+       for ( int d = 2; d <= 26 ; d = d + 2 ) {
+
+         if ( s.charAt(i) == alphabet[d] ) {
+           result = result + s.charAt(i);
+         }
+
+       }
+
+     }
+
+     return result;
    }
 
   /**
@@ -88,7 +132,24 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input
    */
    public static String oddsOnly( String s ) {
-      return new String( "IKIKIK" );
+
+     s = s.toLowerCase();
+
+     String result = "";
+
+     for ( int i = 0; i < s.length() ; i++ ) {
+
+       for ( int d = 1; d <= 25; d = d + 2 ) {
+
+         if ( s.charAt(i) == alphabet[d] ) {
+           result = result + s.charAt(i);
+         }
+
+       }
+
+     }
+
+      return result;
    }
 
   /**
@@ -99,7 +160,20 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input without duplicates
    */
    public static String evensOnlyNoDupes( String s ) {
-      return new String( "HJ" );
+
+     s = StringStuff.evensOnly(s);
+
+     String result = "";
+
+     for ( int i = 0; i < s.length(); i++ ) {
+
+       if ( (result.charAt(i)) == (s.charAt(i)) ) {
+         result = result + s.charAt(i);
+       }
+
+     }
+
+     return result;
    }
 
   /**
@@ -110,7 +184,20 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input without duplicates
    */
    public static String oddsOnlyNoDupes( String s ) {
-      return new String( "IK" );
+
+      s = StringStuff.oddsOnly(s);
+
+      String result = "";
+
+      for ( int i = 0; i < s.length(); i++ ) {
+
+        if ( s.indexOf(s.charAt(i)) == s.lastIndexOf(s.charAt(i)) ) {
+          result = result + s.charAt(i);
+        }
+
+      }
+
+      return result;
    }
 
   /**
@@ -120,7 +207,7 @@ public class StringStuff {
    * @return  String containing the reverse of the input string
    */
    public static String reverse( String s ) {
-     s.toLowerCase();
+     s = s.toLowerCase();
 
      String result = "";
 
