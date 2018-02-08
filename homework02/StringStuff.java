@@ -103,6 +103,8 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input
    */
    public static String evensOnly( String s ) {
+     System.out.println( "I lowercased the inputted strings which is why the test will print out a failure when compared to uppercase strings." );
+
 
      s = s.toLowerCase();
 
@@ -120,6 +122,8 @@ public class StringStuff {
 
      }
 
+     System.out.println( "Result = " + result );
+
      return result;
    }
 
@@ -132,6 +136,8 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input
    */
    public static String oddsOnly( String s ) {
+     System.out.println( "I lowercased the inputted strings which is why the test will print out a failure when compared to uppercase strings." );
+
 
      s = s.toLowerCase();
 
@@ -149,6 +155,7 @@ public class StringStuff {
 
      }
 
+      System.out.println( "Result = " + result );
       return result;
    }
 
@@ -160,19 +167,22 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input without duplicates
    */
    public static String evensOnlyNoDupes( String s ) {
+     System.out.println( "I lowercased the inputted strings which is why the test will print out a failure when compared to uppercase strings." );
 
-     s = StringStuff.evensOnly(s);
+     s = StringStuff.oddsOnly(s);
 
      String result = "";
+     result = result + s.charAt(0);
 
-     for ( int i = 0; i < s.length(); i++ ) {
+     for ( int i = 1; i < s.length(); i++ ) {
 
-       if ( (result.charAt(i)) == (s.charAt(i)) ) {
+       if ( s.indexOf(s.charAt(i)) == s.lastIndexOf(s.charAt(i)) ) {
          result = result + s.charAt(i);
        }
 
      }
 
+     System.out.println( "Result = " + result );
      return result;
    }
 
@@ -184,12 +194,14 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input without duplicates
    */
    public static String oddsOnlyNoDupes( String s ) {
+     System.out.println( "I lowercased the inputted strings which is why the test will print out a failure when compared to uppercase strings." );
 
       s = StringStuff.oddsOnly(s);
 
       String result = "";
+      result = result + s.charAt(0);
 
-      for ( int i = 0; i < s.length(); i++ ) {
+      for ( int i = 1; i < s.length(); i++ ) {
 
         if ( s.indexOf(s.charAt(i)) == s.lastIndexOf(s.charAt(i)) ) {
           result = result + s.charAt(i);
@@ -197,6 +209,7 @@ public class StringStuff {
 
       }
 
+      System.out.println( "Result = " + result );
       return result;
    }
 
@@ -207,6 +220,8 @@ public class StringStuff {
    * @return  String containing the reverse of the input string
    */
    public static String reverse( String s ) {
+     System.out.println( "I lowercased the inputted strings which is why the test will print out a failure when compared to uppercase strings." );
+
      s = s.toLowerCase();
 
      String result = "";
@@ -215,6 +230,7 @@ public class StringStuff {
        result = result + s.charAt(i);
      }
 
+     System.out.println( "Result = " + result );
      return result;
    }
 
@@ -225,25 +241,23 @@ public class StringStuff {
    */
    public static void main( String args[] ) {
       String blah = new String( "Blah blah blah" );
-      String woof = new String( "BCDBCDBCDBCDBCD" );
+      String BC = new String( "BCDBCDBCDBCDBCD" );
       String pal1 = new String( "a" );
       String pal2 = new String( "ab" );
       String pal3 = new String( "aba" );
       String pal4 = new String( "amanaplanacanalpanama" );
       String pal5 = new String( "abba" );
-      System.out.println( containsVowel( blah ) );
-      System.out.println( containsVowel( woof ) );
-      System.out.println( isPalindrome( pal1 ) );
-      System.out.println( isPalindrome( pal2 ) );
-      System.out.println( isPalindrome( pal3 ) );
-      System.out.println( isPalindrome( pal4 ) );
-      System.out.println( isPalindrome( pal5 ) );
-      System.out.println( "evensOnly()        returns: " + evensOnly( "REHEARSALSZ" ) );
-      System.out.println( "evensOnly()        returns: " + evensOnly( "REhearSALsz" ) );
-      System.out.println( "evensOnlyNoDupes() returns: " + evensOnlyNoDupes( "REhearSALsz" ) );
-      System.out.println( "oddsOnly()         returns: " + oddsOnly( "xylophones" ) );
-      System.out.println( "oddsOnly()         returns: " + oddsOnly( "XYloPHonES" ) );
-      System.out.println( "oddsOnlyNoDupes()  returns: " + oddsOnlyNoDupes( "XYloPHonES" ) );
-      System.out.println( "reverse()          returns: " + reverse( "REHEARSALSZ" ) );
+      System.out.println( "containsVowel() should return true: " + containsVowel( blah ) );
+      System.out.println( "containsVowel() should return true: " + containsVowel( BC ) );
+      System.out.println( "isPalindrome() should return true:" + isPalindrome( pal1 ) );
+      System.out.println( "isPalindrome() should return false:" + isPalindrome( pal2 ) );
+      System.out.println( "isPalindrome() should return true:" + isPalindrome( pal3 ) );
+      System.out.println( "isPalindrome() should return true:" + isPalindrome( pal4 ) );
+      System.out.println( "isPalindrome() should return true:" + isPalindrome( pal5 ) );
+      System.out.println( "evensOnly() should return xlphn: " + evensOnly( "xylophones" ) );
+      System.out.println( "evensOnlyNoDupes() should return rhrlz: " + evensOnlyNoDupes( "rehearsalsz" ) );
+      System.out.println( "oddsOnly() should return yooes: " + oddsOnly( "xylophones" ) );
+      System.out.println( "oddsOnlyNoDupes() should return yoes: " + oddsOnlyNoDupes( "XYloPHonES" ) );
+      System.out.println( "reverse() should return zslasraeher: " + reverse( "REHEARSALSZ" ) );
    }
 }
