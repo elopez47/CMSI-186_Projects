@@ -2,9 +2,7 @@
 
  Name: Eva Lopez
  File name: Die.java
- Purpose: Determines if a given year is a leap year, the days in a given month,
-   returns whether or not a date is valid, and counts the number of days between
-   two dates.
+ Purpose: Creates a die of n sides.
  Date:  2018-02-17
 
 */
