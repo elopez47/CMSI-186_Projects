@@ -25,13 +25,32 @@ public class DiceSet {
    */
    public DiceSet( int count, int sides ) {
       ds = new Die[ count ];
+      this.count = count;
+      this.sides = sides;
+
+      if ( count <= 0 ) {
+         throw new IllegalArgumentException( "The dice count must be greater than 0." );
+      } else if ( sides < 4 ) {
+         throw new IllegalArgumentException( "The minimum number of sides is 4." );
+      } else {
+        for ( int i = 0; i < count; i++ ) {
+           ds[i] = new Die(sides);
+        }
+      }
    }
 
   /**
    * @return the sum of all the dice values in the set
    */
    public int sum() {
-      return 0;
+      int total = 0;
+
+      for ( int i = 0; i <
+      count; i++) {
+         total += ds[i].getValue();
+      }
+
+      return total;
    }
 
   /**
@@ -40,6 +59,9 @@ public class DiceSet {
    *  the values of the dice in the set
    */
    public void roll() {
+     for ( int i = 0; i < count; i++ ) {
+        ds[i].roll();
+     }
    }
 
   /**
@@ -49,7 +71,10 @@ public class DiceSet {
    * @trhows IllegalArgumentException if the index is out of range
    */
    public int rollIndividual( int dieIndex ) {
-      return 0;
+      if ( dieIndex > count || dieIndex <= 0) {
+         throw new IllegalArgumentException( "The index entered is out of range." );
+      }
+      return ds[ dieIndex-1 ].roll();
    }
 
   /**
@@ -58,7 +83,10 @@ public class DiceSet {
    * @trhows IllegalArgumentException if the index is out of range
    */
    public int getIndividual( int dieIndex ) {
-      return -999;
+      if ( dieIndex > count || dieIndex <= 0) {
+         throw new IllegalArgumentException( "The index entered is out of range." );
+      }
+      return ds[ dieIndex-1 ].getValue();
    }
 
   /**
@@ -66,6 +94,9 @@ public class DiceSet {
    */
    public String toString() {
       String result = "";
+      for ( int i = 0; i < count; i++ ) {
+        result += "[" + sides + "]";
+      }
       return result;
    }
 
@@ -73,20 +104,36 @@ public class DiceSet {
    * @return Class-wide version of the preceding instance method
    */
    public static String toString( DiceSet ds ) {
-      return "";
+      return ds.toString();
    }
 
   /**
-   * @return  tru iff this set is identical to the set passed as an argument
+   * @return  true iff this set is identical to the set passed as an argument
    */
    public boolean isIdentical( DiceSet ds ) {
-      return true;
+      if ( this.count == ds.count && this.sides == ds.sides && this.sum() == ds.sum() ) {
+        return true;
+      }
+      return false;
    }
   /**
    * A little test main to check things out
    */
    public static void main( String[] args ) {
-      // You do this part!
+      DiceSet x = new DiceSet(0,3);
+      DiceSet y = new DiceSet(4,4);
+      DiceSet z = new DiceSet(4,6);
+      DiceSet g = new DiceSet(4,6);
+      DiceSet j = new DiceSet(3,7);
+
+      System.out.println( x.sum() );
+      System.out.println( x.rollIndividual(3) );
+      System.out.println( x.rollIndividual(5) );
+      System.out.println( x.getIndividual(3) );
+      System.out.println( x.getIndividual(5) );
+      System.out.println( x.toString() );
+      System.out.println( z.isIdentical(g) );
+
    }
 
 }
