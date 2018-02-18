@@ -120,12 +120,12 @@ public class DiceSet {
    * A little test main to check things out
    */
    public static void main( String[] args ) {
-      DiceSet x = new DiceSet(0,3);
-      DiceSet y = new DiceSet(4,4);
-      DiceSet z = new DiceSet(4,6);
+      //DiceSet x = new DiceSet(0,3);
+      DiceSet y = new DiceSet(3,7);
+      DiceSet z = new DiceSet(13,11);
       DiceSet g = new DiceSet(4,6);
       DiceSet j = new DiceSet(3,7);
-
+/*    throws IllegalArgumentException when args are invalid
       System.out.println( x.sum() );
       System.out.println( x.rollIndividual(3) );
       System.out.println( x.rollIndividual(5) );
@@ -133,6 +133,46 @@ public class DiceSet {
       System.out.println( x.getIndividual(5) );
       System.out.println( x.toString() );
       System.out.println( z.isIdentical(g) );
+*/
+      System.out.println("\n");
+
+      System.out.println( y.sum() );
+      System.out.println( y.rollIndividual(3) );
+      System.out.println( y.rollIndividual(1) );
+      System.out.println( y.getIndividual(3) );
+      System.out.println( y.getIndividual(2) );
+      System.out.println( y.toString() );
+      System.out.println( y.isIdentical(j) );
+
+      System.out.println("\n");
+
+      System.out.println( z.sum() );
+      System.out.println( z.rollIndividual(3) );
+      System.out.println( z.rollIndividual(1) );
+      System.out.println( z.getIndividual(3) );
+      System.out.println( z.getIndividual(8) );
+      System.out.println( z.toString() );
+      System.out.println( z.isIdentical(g) );
+
+      System.out.println("\n");
+
+      System.out.println( g.sum() );
+      System.out.println( g.rollIndividual(3) );
+      System.out.println( g.rollIndividual(2) );
+      System.out.println( g.getIndividual(1) );
+      System.out.println( g.getIndividual(2) );
+      System.out.println( g.toString() );
+      System.out.println( g.isIdentical(g) );
+
+      System.out.println("\n");
+
+      System.out.println( j.sum() );
+      System.out.println( j.rollIndividual(3) );
+      System.out.println( j.rollIndividual(2) );
+      System.out.println( j.getIndividual(3) );
+      System.out.println( j.getIndividual(1) );
+      System.out.println( j.toString() );
+      System.out.println( j.isIdentical(y) );
 
    }
 
