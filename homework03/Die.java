@@ -24,11 +24,11 @@ public class Die {
    * Note: parameter must be checked for validity; invalid value must throw "IllegalArgumentException"
    */
    public Die( int nSides ) {
-      this.nSides = nSides;
-      if ( nSides >= MINIMUM_SIDES ) {
-      } else {
-         throw new IllegalArgumentException( "Minimum number of sides is 4." );
-      }
+       if ( nSides >= MINIMUM_SIDES ) {
+         this.nSides = nSides;
+       } else {
+        throw new IllegalArgumentException( "The minimum number of sides is 4." );
+     }
    }
 
   /**
@@ -36,7 +36,7 @@ public class Die {
    * @return  integer value of the result of the roll, randomly selected
    */
    public int roll() {
-      return (int)(Math.floor(Math.random() * this.nSides) + 1);
+      return (int)(Math.floor(Math.random() * nSides) + 1);
    }
 
   /**
@@ -68,8 +68,7 @@ public class Die {
    * @return String representation of this Die
    */
    public String toString() {
-      String result = "[" + this.getValue() + "]";
-      return result;
+      return "[" + nSides + "]";
    }
 
   /**
@@ -77,18 +76,39 @@ public class Die {
    * @return String representation of this Die
    */
    public static String toString( Die d ) {
-      return "";
+      return "[" + d.nSides + "]";
    }
 
   /**
    * A little test main to check things out
    */
    public static void main( String[] args ) {
-      Die d = new Die(1);
-      Die q = new Die(2);
-      Die r = new Die(5);
+      Die l = new Die(5);
       Die e = new Die(6);
-      System.out.println( "Hello world from the Die class..." );
+      Die d = new Die(11);
+      Die r = new Die(12);
+
+      System.out.println( l.roll() );
+      System.out.println( l.getValue() );
+      System.out.println( l.toString() );
+
+      System.out.println("\n");
+
+      System.out.println( e.roll() );
+      System.out.println( e.getValue() );
+      System.out.println( e.toString() );
+
+      System.out.println("\n");
+
+      System.out.println( d.roll() );
+      System.out.println( d.getValue() );
+      System.out.println( d.toString() );
+
+      System.out.println("\n");
+
+      System.out.println( r.roll() );
+      System.out.println( r.getValue() );
+      System.out.println( r.toString() );
    }
 
 }
