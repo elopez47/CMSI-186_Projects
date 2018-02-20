@@ -68,7 +68,7 @@ public class Die {
    * @return String representation of this Die
    */
    public String toString() {
-      return "[" + nSides + "]";
+      return "[" + getValue() + "]";
    }
 
   /**
@@ -76,7 +76,7 @@ public class Die {
    * @return String representation of this Die
    */
    public static String toString( Die d ) {
-      return "[" + d.nSides + "]";
+      return "[" + d.getValue() + "]";
    }
 
   /**
@@ -109,6 +109,7 @@ public class Die {
       System.out.println( r.roll() );
       System.out.println( r.getValue() );
       System.out.println( r.toString() );
+
    }
 
 }
