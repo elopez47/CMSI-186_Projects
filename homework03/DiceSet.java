@@ -95,7 +95,7 @@ public class DiceSet {
    public String toString() {
       String result = "";
       for ( int i = 0; i < count; i++ ) {
-        result += "[" + sides + "]";
+        result += "[" + ds[i].getValue() + "]";
       }
       return result;
    }
@@ -116,6 +116,7 @@ public class DiceSet {
       }
       return false;
    }
+
   /**
    * A little test main to check things out
    */
