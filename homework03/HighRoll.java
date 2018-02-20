@@ -15,15 +15,14 @@ public class HighRoll{
       // text into the program
 
       if (args.length != 2) {
-        throw new IllegalArgumentException();
+        System.out.println( "You must provide two arguments: the number of die and the number of sides." );
+        System.exit(0);
       }
       // Parse the arguments.
       int numOfDie = Integer.parseInt(args[0]);
       int numOfSides = Integer.parseInt(args[1]);
       try{
-
         while( true ) { //infinite loop, will break when the user hits the 'q' key
-          System.out.print( ">>" );
 
           System.out.println( "\n\t Welcome to High Roll! \n" );
           System.out.println( " Press the 'q' key to quit the program." );
@@ -37,25 +36,34 @@ public class HighRoll{
           System.out.println( "\n Enter '4' to save as high score." );
           System.out.println( "\n Enter '5' to display your high score." );
           System.out.println( "\n Enter 'q' to end the game." );
-          System.out.print( ">>" ); //prompt
+          System.out.print( ">> " ); //prompt
 
           int highScore = 0;
-          //int k = 0;
+
           String inputLine = null;
           BufferedReader input = new BufferedReader( new InputStreamReader( System.in ) );
           String option = inputLine;
           option = input.readLine();
 
-          switch (option.charAt(0)) {
-              case '1': game.roll();
-              case '2': System.out.println( HighRoll.optionTwo( game ) );
-              case '3': System.out.println( game.sum() );
-              case '4': highScore = game.sum();
-              case '5': System.out.println("Your high score is: " + highScore);
-              case 'q': System.exit(0);
-              default:
-               throw new IllegalArgumentException();
 
+          if ( option.charAt(0) == '1' ) {
+            game.roll();
+            System.out.println( game.toString() );
+            highScore += game.sum();
+          } else if ( option.charAt(0) == '2' ) {
+            System.out.println( " The new value for die you rolled is: " + HighRoll.optionTwo( game ) );
+            highScore += HighRoll.optionTwo( game );
+          } else if ( option.charAt(0) == '3' ) {
+            System.out.println( " The sum of rolls is: " + game.sum() );
+            highScore += game.sum();
+          } else if ( option.charAt(0) == '4' ) {
+            System.out.println( " Your score was saved. Your new high score is: " + highScore);
+          } else if ( option.charAt(0) == '5' ) {
+            System.out.println( " Your high score is: " + highScore);
+          } else if ( option.charAt(0) == 'q' ) {
+            System.exit(0);
+          } else {
+            System.out.println( " Enter some text." );
           }
         }
       }
@@ -64,20 +72,21 @@ public class HighRoll{
       }
     }
 
-    public static int optionTwo(DiceSet ds) {
+    public static int optionTwo( DiceSet ds  ) {
       System.out.println( "\n Enter the die you wish to roll." );
+      System.out.print( ">> " ); //prompt
       String dienum = null;
       BufferedReader input2 = new BufferedReader( new InputStreamReader( System.in ) );
 
       try{
         dienum = input2.readLine();
       }
-      catch(Exception e){
+      catch( Exception e ) {
         System.out.println( "Caught IOException" );
       }
 
       int die = Integer.parseInt( dienum );
-      return ds.rollIndividual( die-1 );
+      return ds.rollIndividual( die - 1 );
     }
 
   }
