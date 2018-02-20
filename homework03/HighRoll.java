@@ -11,8 +11,6 @@ import java.io.IOException;
 public class HighRoll{
 
     public static void main( String args[] ) {
-      // This line uses the two classes to assemble an "input stream" for the user to type
-      // text into the program
 
       if (args.length != 2) {
         System.out.println( "You must provide two arguments: the number of die and the number of sides." );
@@ -21,7 +19,9 @@ public class HighRoll{
       // Parse the arguments.
       int numOfDie = Integer.parseInt(args[0]);
       int numOfSides = Integer.parseInt(args[1]);
+
       try{
+
         while( true ) { //infinite loop, will break when the user hits the 'q' key
 
           System.out.println( "\n\t Welcome to High Roll! \n" );
@@ -47,16 +47,13 @@ public class HighRoll{
 
 
           if ( option.charAt(0) == '1' ) {
-            game.roll();
             System.out.println( game.toString() );
-            highScore += game.sum();
           } else if ( option.charAt(0) == '2' ) {
             System.out.println( " The new value for die you rolled is: " + HighRoll.optionTwo( game ) );
-            highScore += HighRoll.optionTwo( game );
           } else if ( option.charAt(0) == '3' ) {
             System.out.println( " The sum of rolls is: " + game.sum() );
-            highScore += game.sum();
           } else if ( option.charAt(0) == '4' ) {
+            highScore = game.sum();
             System.out.println( " Your score was saved. Your new high score is: " + highScore);
           } else if ( option.charAt(0) == '5' ) {
             System.out.println( " Your high score is: " + highScore);
@@ -68,7 +65,9 @@ public class HighRoll{
         }
       }
       catch( Exception e ) {
+
         System.out.println( "Caught IOException" );
+
       }
     }
 
@@ -78,7 +77,7 @@ public class HighRoll{
       String dienum = null;
       BufferedReader input2 = new BufferedReader( new InputStreamReader( System.in ) );
 
-      try{
+      try {
         dienum = input2.readLine();
       }
       catch( Exception e ) {
@@ -86,7 +85,7 @@ public class HighRoll{
       }
 
       int die = Integer.parseInt( dienum );
-      return ds.rollIndividual( die - 1 );
+      return ds.rollIndividual( die );
     }
 
   }
