@@ -1,0 +1,1180 @@
+1
+1
+[3]
+
+
+4
+2
+[2]
+
+
+8
+4
+[1]
+
+
+2
+3
+[6]
+
+
+10
+1
+3
+3
+5
+[4][5][6]
+false
+
+
+81
+7
+7
+4
+2
+[11][7][11][5][3][1][10][5][9][11][9][11][7]
+false
+
+
+15
+2
+1
+1
+3
+[6][3][2][6]
+false
+
+
+14
+2
+4
+2
+1
+[6][7][7]
+false
+
+
+NOTE: end of Die and DiceSet testing
+
+TESTING THE DIE CLASS: TEST CONSTRUCTOR FOR INVALID NUMBERS OF SIDES:
+   Too few sides requested to constructor....
+   Too few sides requested to constructor....
+   Too few sides requested to constructor....
+   Too few sides requested to constructor....
+TESTING THE DIE CLASS: TESTS ON 4-SIDED DIE:
+   roll() test for 4 sided die: 
+   You rolled a 4
+   You rolled a 3
+   You rolled a 1
+   You rolled a 1
+   You rolled a 3
+   Current value is: [4]
+TESTING THE DIE CLASS: TESTS ON 5-SIDED DIE:
+   roll() test for 5 sided die: 
+   You rolled a 1
+   You rolled a 5
+   You rolled a 4
+   You rolled a 5
+   You rolled a 1
+   Current value is: [5]
+TESTING THE DIE CLASS: TESTS ON 6-SIDED DIE:
+   roll() test for 6 sided die: 
+   You rolled a 2
+   You rolled a 4
+   You rolled a 5
+   You rolled a 1
+   You rolled a 5
+   Current value is: [1]
+TESTING THE DIE CLASS: TESTS ON 7-SIDED DIE:
+   roll() test for 7 sided die: 
+   You rolled a 6
+   You rolled a 6
+   You rolled a 2
+   You rolled a 1
+   You rolled a 4
+   Current value is: [5]
+TESTING THE DIE CLASS: TESTS ON 8-SIDED DIE:
+   roll() test for 8 sided die: 
+   You rolled a 8
+   You rolled a 2
+   You rolled a 4
+   You rolled a 7
+   You rolled a 8
+   Current value is: [2]
+TESTING THE DIE CLASS: TESTS ON 11-SIDED DIE USING NEW SIDE COUNT:
+   Rolling with new side count -- 
+      You rolled a 6
+      You rolled a 2
+      You rolled a 5
+      You rolled a 3
+      You rolled a 2
+TESTING THE DIE CLASS: TESTS ON 17-SIDED DIE USING NEW SIDE COUNT:
+   Rolling with new side count -- 
+      You rolled a 7
+      current value is: 12
+TESTING THE DIE CLASS: TESTS ON 111-SIDED DIE USING NEW SIDE COUNT:
+   Rolling with new side count -- 
+      You rolled a 7
+      current value is: 95
+......End of Die Class Testing.....
+
+
+TESTING THE DICESET CLASS: TEST CONSTRUCTOR FOR 3 SIX-SIDED DICE:
+  DiceSet: 3 dice, six sided - ds36:
+      initialized ds36 contents             : [2][2][3]
+      after collective roll ds36 contents   : [4][3][3]
+      after individual roll(2) ds36 contents: [4][5][1]
+      sum of dice values is: 5
+   Re-rolling all dice
+      after collective roll ds36 contents   : [4][5][1]
+      after individual roll(2) ds36 contents: [2][2][4]
+      sum of dice values is                 : 14
+   Test of getIndividual(): 
+      value of die at index 0: 3
+      value of die at index 1: 5
+      value of die at index 2: 3
+TESTING THE DICESET CLASS: TEST CONSTRUCTOR FOR 6 NINE-SIDED DICE:
+   DiceSet: 6 dice, nine sided - ds69:
+      initialized ds36 contents             : [7][7][9][4][7][2]
+      after collective roll ds69 contents   : [2][6][1][7][7][8]
+      after individual roll(2) ds69 contents: [3][8][8][7][5][3]
+      sum of dice values is                 : 21
+   Re-rolling all dice
+      after collective roll ds69 contents   : [7][8][4][2][6][9]
+      after individual roll(3) ds69 contents: [4][5][4][4][1][4]
+      sum of dice values is                 : 33
+   Test of getIndividual(): 
+      value of die at index 0: 4
+      value of die at index 1: 3
+      value of die at index 2: 2
+      value of die at index 3: 4
+      value of die at index 4: 7
+      value of die at index 5: 7
+TESTING THE DICESET CLASS: TEST CONSTRUCTOR FOR 9 SEVENTEEN-SIDED DICE:
+   DiceSet: 9 dice, 17 sided - ds917:
+      initialized ds36 contents              : [6][5][1][12][13][9][3][3][4]
+      after collective roll ds917 contents   : [6][9][6][10][10][11][7][14][3]
+      after individual roll(6) ds917 contents: [15][6][6][10][11][17][7][1][13]
+      sum of dice values is                  : 70
+   Re-rolling all dice
+      after collective roll ds917 contents   : [17][4][2][4][10][5][17][6][7]
+      after individual roll(8) ds69 contents : [15][1][14][13][16][12][16][17][1]
+      sum of dice values is                  : 80
+   Test of getIndividual(): 
+      value of die at index 0: 8
+      value of die at index 1: 2
+      value of die at index 2: 6
+      value of die at index 3: 10
+      value of die at index 4: 2
+      value of die at index 5: 3
+      value of die at index 6: 5
+      value of die at index 7: 6
+      value of die at index 8: 4
+TESTING THE DICESET CLASS: TEST 'isIdentical()' FOR 9 SEVENTEEN-SIDED DICE:
+   Test of isIndentical(): 
+      Test of ds917 against ds69   : false
+      Test of ds917 against itself : false
+TESTING THE DICESET CLASS: TEST 'isIdentical()' FOR NEW SET OF 9 SEVENTEEN-SIDED DICE:
+   DiceSet ds917 contents       : [5][2][12][10][3][12][5][12][8]
+      New DiceSet ds2_917 contents : [7][11][8][3][11][12][2][7][5]
+      Test of ds917 against ds2_917: false
+......End of DiceSet Class Testing.....
+
+
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [1][1][2][4][1]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [4][5][2][5][5]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [2][6][5][2][4]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 2
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 2
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 1
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  The sum of rolls is: 15
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your score was saved. Your new high score is: 17
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your high score is: 0
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [5][2][4][3][4]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [5][5][5][1][2]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 6
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 6
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  The sum of rolls is: 11
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your score was saved. Your new high score is: 18
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your high score is: 0
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [15][16][10][4][11][10][4][7][16][5][7]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [5][17][15][13][2][12][8][9][11][9][1]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [12][7][9][1][11][6][7][7][7][4][2]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 2
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 1
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 15
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  The sum of rolls is: 96
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your score was saved. Your new high score is: 90
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your high score is: 0
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [11][16][14][15][9][2][17][14][8][15][14]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [1][13][13][2][8][13][8][3][5][14][14]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 9
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 3
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  The sum of rolls is: 107
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your score was saved. Your new high score is: 79
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your high score is: 0
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [2][1][1][2][3][1][2][3][3][1][2][2][3][3][2][4][3][1][3][4][3][4][4][1][2][4][1][4][2]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [3][1][3][4][3][2][2][4][2][4][3][4][1][2][3][3][1][2][4][1][3][4][1][4][1][3][4][1][2]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [1][2][2][3][2][1][2][1][2][3][1][3][2][4][4][2][2][2][3][4][1][3][1][1][1][4][1][4][1]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 3
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 3
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 1
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  The sum of rolls is: 74
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your score was saved. Your new high score is: 76
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your high score is: 0
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [1][3][2][3][3][4][1][4][2][1][4][2][3][3][3][4][3][2][1][4][3][4][4][1][1][4][2][1][3]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> [2][3][3][4][4][3][3][1][1][2][2][2][3][3][3][3][3][4][1][1][2][3][1][3][4][4][4][3][2]
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 4
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
+ Enter the die you wish to roll.
+>>  The new value for die you rolled is: 1
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  The sum of rolls is: 77
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your score was saved. Your new high score is: 72
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>>  Your high score is: 0
+
+	 Welcome to High Roll! 
+
+ Press the 'q' key to quit the program.
+
+		 MENU
+
+ Enter '1' to roll all the dice.
+
+ Enter '2' to roll a single die.
+
+ Enter '3' to calculate the score for this set of rolls.
+
+ Enter '4' to save as high score.
+
+ Enter '5' to display your high score.
+
+ Enter 'q' to end the game.
+>> 
