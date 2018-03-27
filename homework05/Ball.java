@@ -99,12 +99,12 @@ public class Ball {
    }
 
    public double calculateXPosition() {
-      this.xPosition = xPosition * this.getXVelocity();
+      this.xPosition += xPosition * this.getXVelocity();
       return xPosition;
    }
 
    public double calculateYPosition() {
-      this.yPosition = yPosition * this.getYVelocity();
+      this.yPosition += yPosition * this.getYVelocity();
       return yPosition;
    }
 
@@ -148,9 +148,9 @@ public class Ball {
    // If ball is at rest, returns 0.0. If ball is still moving, returns 1.0.
    public double atRest() {
       if( ( this.getXVelocity() <= .083 ) && ( this.getYVelocity() <= .083 ) ) {
-         return 1.0;
-      }
          return 0.0;
+      }
+         return 1.0;
    }
 
    // If ball is out of bounds, returns 0.0. If ball is still in bounds, returns 1.0.
