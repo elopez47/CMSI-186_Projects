@@ -96,6 +96,16 @@ public class SoccerSim {
       return false;
    }
 
+   public boolean checkForRest() {
+      for (int i = 0; i < balls.length ; i++ ) {
+         if(balls[i].atRest() == 1){
+            return false;
+         }
+      }
+      return true;
+   }
+
+
    public static void main( String args[] ) {
       SoccerSim socSim = new SoccerSim();
 
@@ -108,7 +118,10 @@ public class SoccerSim {
       }
 
       socSim.handleInitialArguments(args);
-
+      String condition = (balls[0].atRest() == 0) + "";
+      for ( int i = 1; i < balls.length ; i++ ) {
+         condition+= "&&" + (balls[i].atRest() == 0);
+      }
       System.out.println("\n Initial positions:");
       for (int i = 0; i < balls.length; i++ ) {
          System.out.println("Ball " + i + " is at " + balls[i].toString());
@@ -133,6 +146,14 @@ public class SoccerSim {
 
          }
 
+         if (socSim.checkForRest()) {
+            System.out.println("All balls are now at rest and no collision occured.");
+            for (int i = 0; i < balls.length ; i++ ) {
+               System.out.println(" Ball " + i + "'s final " + balls[i].toString());
+            }
+            System.exit(1);
+         }
+
          for ( int i = 0; i < balls.length - 1; i++ ) {
             for ( int j = i + 1; j < balls.length ; j++ ) {
                if( socSim.checkForCollision( balls[i], balls[j] ) ) {
@@ -142,8 +163,8 @@ public class SoccerSim {
             }
 
          }
-
       }
+
    }
 
 }
