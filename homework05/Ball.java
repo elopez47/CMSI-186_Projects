@@ -16,8 +16,6 @@ public class Ball {
    private static final double WEST_END_OF_FIELD = -300;
    private static final double EAST_END_OF_FIELD = 300;
    private static final double MAX_TIME_SLICE_IN_SECONDS  = 1800.00;
-   private static double[] ballPosition = null;
-   private static double[] ballVelocity = null;
    private double xPosition = 0;
    private double yPosition = 0;
    private double xVelocity = 0;
@@ -34,15 +32,18 @@ public class Ball {
      this.yVelocity = yVelocity;
      this.timeSlice = timeSlice;
 
-     double[] ballPosition = { this.getXPosition() , this.getYPosition() };
-     double[] ballVelocity = { this.getXVelocity() , this.getYVelocity() };
-
    }
 
 
 
    public double validateXPositionArgument( String argValue ) throws NumberFormatException {
-      this.xPosition = Double.parseDouble( argValue );
+
+      try {
+         this.xPosition = Double.parseDouble( argValue );
+      }
+      catch (NumberFormatException nfe) {
+         throw new NumberFormatException( "INVALID X POSITION ARGUMENT: enter a number between " + WEST_END_OF_FIELD + " and " + EAST_END_OF_FIELD + ".");
+      }
       if ( (argValue == null) || ( xPosition <= WEST_END_OF_FIELD  || xPosition >= EAST_END_OF_FIELD ) )  {
          throw new NumberFormatException( "INVALID X POSITION ARGUMENT: enter a number between " + WEST_END_OF_FIELD + " and " + EAST_END_OF_FIELD + ".");
       }
@@ -50,7 +51,12 @@ public class Ball {
    }
 
    public double validateYPositionArgument( String argValue ) throws NumberFormatException {
-      this.yPosition = Double.parseDouble( argValue );
+      try {
+         this.yPosition = Double.parseDouble( argValue );
+      }
+      catch (NumberFormatException nfe) {
+         throw new NumberFormatException( "INVALID Y POSITION ARGUMENT: enter a number between " + SOUTH_END_OF_FIELD + " and " + NORTH_END_OF_FIELD + ".");
+      }
       if ( (argValue == null) || ( yPosition >= NORTH_END_OF_FIELD  || yPosition <= SOUTH_END_OF_FIELD ) )  {
          throw new NumberFormatException( "INVALID Y POSITION ARGUMENT: enter a number between " + SOUTH_END_OF_FIELD + " and " + NORTH_END_OF_FIELD + ".");
       }
@@ -58,7 +64,12 @@ public class Ball {
    }
 
    public double validateXVelocityArgument( String argValue ) throws NumberFormatException {
-      this.xVelocity = Double.parseDouble( argValue );
+      try {
+         this.xVelocity = Double.parseDouble( argValue );
+      }
+      catch (NumberFormatException nfe) {
+         throw new NumberFormatException( "INVALID X VELOCITY ARGUMENT: enter a number between " + WEST_END_OF_FIELD + " and " + EAST_END_OF_FIELD + ".");
+      }
       if ( (argValue == null) || ( xVelocity <= WEST_END_OF_FIELD  || xVelocity >= EAST_END_OF_FIELD ) )  {
          throw new NumberFormatException( "INVALID X VELOCITY ARGUMENT: enter a number between " + WEST_END_OF_FIELD + " and " + EAST_END_OF_FIELD + ".");
       }
@@ -66,7 +77,13 @@ public class Ball {
    }
 
    public double validateYVelocityArgument( String argValue ) throws NumberFormatException {
-      this.yVelocity = Double.parseDouble( argValue );
+      try {
+         this.yVelocity = Double.parseDouble( argValue );
+      }
+      catch (NumberFormatException nfe) {
+         throw new NumberFormatException( "INVALID Y VELOCITY ARGUMENT: enter a number between " + SOUTH_END_OF_FIELD + " and " + NORTH_END_OF_FIELD + ".");
+
+      }
       if ( (argValue == null) || ( yVelocity >= NORTH_END_OF_FIELD  || yVelocity <= SOUTH_END_OF_FIELD ) )  {
          throw new NumberFormatException( "INVALID Y VELOCITY ARGUMENT: enter a number between " + SOUTH_END_OF_FIELD + " and " + NORTH_END_OF_FIELD + ".");
       }
@@ -82,12 +99,12 @@ public class Ball {
    }
 
    public double calculateXPosition() {
-      this.xPosition = (xPosition * this.getXVelocity());
+      this.xPosition = xPosition * this.getXVelocity();
       return xPosition;
    }
 
    public double calculateYPosition() {
-      this.yPosition = (yPosition * this.getYVelocity());
+      this.yPosition = yPosition * this.getYVelocity();
       return yPosition;
    }
 
@@ -138,7 +155,7 @@ public class Ball {
 
    // If ball is out of bounds, returns 0.0. If ball is still in bounds, returns 1.0.
    public double inBounds(){
-      if ( this.calculateXPosition() < WEST_END_OF_FIELD || this.calculateXPosition() > EAST_END_OF_FIELD || this.calculateYPosition() > NORTH_END_OF_FIELD || this.calculateYPosition() < SOUTH_END_OF_FIELD ) {
+      if ( this.getXPosition() < WEST_END_OF_FIELD || this.getXPosition() > EAST_END_OF_FIELD || this.getYPosition() > NORTH_END_OF_FIELD || this.getYPosition() < SOUTH_END_OF_FIELD ) {
          return 0.0;
       }
       return 1.0;
@@ -177,5 +194,13 @@ public class Ball {
      System.out.println( " \n  New ball coordinates: " + ball.toString() );
      ball.move();
      System.out.println( "\n  New ball coordinates: " + ball.toString() );
+
+     //Testing validity of args
+    // Ball ball3 = new Ball(20, 309, -300, 65, 1900);
+     //System.out.println(ball3.validateXPositionArgument("abc"));
+
    }
+
+
+
 }
