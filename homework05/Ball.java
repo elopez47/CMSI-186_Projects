@@ -11,10 +11,10 @@ import java.text.DecimalFormat;
 public class Ball {
    private static final double RADIUS_OF_BALL = 4.45;
    private static final double DEFAULT_TIME_SLICE_IN_SECONDS = 1;
-   private static final double NORTH_END_OF_FIELD = 300;
-   private static final double SOUTH_END_OF_FIELD = -300;
-   private static final double WEST_END_OF_FIELD = -300;
-   private static final double EAST_END_OF_FIELD = 300;
+   private static final double NORTH_END_OF_FIELD = 3000;
+   private static final double SOUTH_END_OF_FIELD = -3000;
+   private static final double WEST_END_OF_FIELD = -3000;
+   private static final double EAST_END_OF_FIELD = 3000;
    private static final double MAX_TIME_SLICE_IN_SECONDS  = 1800.00;
    private double xPosition = 0;
    private double yPosition = 0;
