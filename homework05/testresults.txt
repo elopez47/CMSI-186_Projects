@@ -1,0 +1,198 @@
+.
+.
+======================================
+... Testing Ball class ...
+======================================
+
+ BALL CLASS TESTER PROGRAM
+--------------------------
+
+Creating a ball:
+
+  Initial ball coordinates: Position (10.00, 10.00), Velocity (1.00, 1.00)
+
+  New ball coordinates: Position (20.00, 20.00), Velocity (.99, .99)
+
+  New ball coordinates: Position (39.80, 39.80), Velocity (.98, .98)
+
+  New ball coordinates: Position (78.81, 78.81), Velocity (.97, .97)
+
+Creating new ball (ball2):
+
+  Initial coodinates of ball2: Position (-2.00, 1.00), Velocity (3.00, -1.00)
+
+  New ball coordinates: Position (155.28, 155.28), Velocity (.96, .96)
+
+  New ball coordinates: Position (304.43, 304.43), Velocity (.95, .95)
+
+  New ball coordinates: Position (593.94, 593.94), Velocity (.94, .94)
+.
+.
+.
+.
+======================================
+... Testing Clock class ...
+======================================
+
+CLOCK CLASS TESTER PROGRAM
+--------------------------
+
+  Creating a new clock:
+    New clock created: 0 : 0 : .00
+    Testing validateAngleArg()....
+      sending '  0 degrees', expecting double value   0.0 - got 0.0
+0 : 0 : .00
+Total Seconds: 120.0
+0 : 2 : .00
+0.5004
+6.0
+5.4996
+.
+.
+======================================
+... Testing SoccerSim no args...
+======================================
+   Sorry you must enter at least eight arguments
+   Usage: java SoccerSim <ball 1's x position> <ball 1's y position> <ball 1's x direction> <ball 1's y direction <ball 2's x position> <ball 2's y position> <ball 2's x direction> <ball 2's y direction> ... [timeSlice]
+   Please try again.
+.
+.
+======================================
+... Testing SoccerSim one arg...
+======================================
+.
+.
+======================================
+... Testing SoccerSim two args...
+======================================
+   Sorry you must enter at least eight arguments
+   Usage: java SoccerSim <ball 1's x position> <ball 1's y position> <ball 1's x direction> <ball 1's y direction <ball 2's x position> <ball 2's y position> <ball 2's x direction> <ball 2's y direction> ... [timeSlice]
+   Please try again.
+.
+.
+======================================
+... Testing SoccerSim three args...
+======================================
+   Sorry you must enter at least eight arguments
+   Usage: java SoccerSim <ball 1's x position> <ball 1's y position> <ball 1's x direction> <ball 1's y direction <ball 2's x position> <ball 2's y position> <ball 2's x direction> <ball 2's y direction> ... [timeSlice]
+   Please try again.
+.
+.
+======================================
+... Testing SoccerSim six args...
+======================================
+   Sorry you must enter at least eight arguments
+   Usage: java SoccerSim <ball 1's x position> <ball 1's y position> <ball 1's x direction> <ball 1's y direction <ball 2's x position> <ball 2's y position> <ball 2's x direction> <ball 2's y direction> ... [timeSlice]
+   Please try again.
+.
+.
+======================================
+... Testing SoccerSim out of bounds...
+======================================
+threw Exception in thread "main" java.lang.NullPointerException
+        at SoccerSim.handleInitialArguments(SoccerSim.java:51)
+        at SoccerSim.main(SoccerSim.java:120)
+.
+.
+======================================
+... Testing SoccerSim negative time slice...
+======================================
+.
+.
+======================================
+... Testing SoccerSim time slice too large...
+======================================
+.
+.
+======================================
+... Testing SoccerSim time slice value of zero...
+======================================
+.
+.
+======================================
+... Testing SoccerSim check for collision...
+======================================
+threw Exception in thread "main" java.lang.NullPointerException
+        at SoccerSim.handleInitialArguments(SoccerSim.java:51)
+        at SoccerSim.main(SoccerSim.java:120)
+.
+.
+======================================
+... Testing SoccerSim valid ball should come to rest...
+======================================
+threw Exception in thread "main" java.lang.NullPointerException
+        at SoccerSim.handleInitialArguments(SoccerSim.java:51)
+        at SoccerSim.main(SoccerSim.java:120)
+.
+.
+======================================
+... Testing SoccerSim valid ball should go out of bounds...
+======================================
+threw Exception in thread "main" java.lang.NullPointerException
+        at SoccerSim.handleInitialArguments(SoccerSim.java:51)
+        at SoccerSim.main(SoccerSim.java:120)
+.
+.
+======================================
+... Testing SoccerSim valid ball set six balls subsecond time slice...
+======================================
+
+ Initial positions:
+Ball 0 is at Position (200.00, 200.00), Velocity (10.00, 10.00)
+Ball 1 is at Position (100.00, 100.00), Velocity (-100.00, -100.00)
+Ball 2 is at Position (150.00, 150.00), Velocity (200.00, 200.00)
+Ball 3 is at Position (175.00, 175.00), Velocity (-110.00, -110.00)
+Ball 4 is at Position (20.00, 20.00), Velocity (1.00, 1.00)
+Ball 5 is at Position (50.00, 50.00), Velocity (-5.00, -5.00)
+
+ Update position at time 0 : 0 : .10
+ Ball 0 is at Position (2200.00, 2200.00), Velocity (9.99, 9.99)
+ Ball 1 is at Position (-9900.00, -9900.00), Velocity (-99.90, -99.90)
+
+ Ball 1 collided with the wall at time: 0 : 0 : .10
+.
+.
+======================================
+... Testing SoccerSim valid ball set five balls 1.234 second time slice...
+======================================
+
+ Initial positions:
+Ball 0 is at Position (200.00, 200.00), Velocity (10.00, 10.00)
+Ball 1 is at Position (100.00, 100.00), Velocity (-100.00, -100.00)
+Ball 2 is at Position (175.00, 175.00), Velocity (-110.00, -110.00)
+Ball 3 is at Position (20.00, 20.00), Velocity (1.00, 1.00)
+Ball 4 is at Position (50.00, 50.00), Velocity (-5.00, -5.00)
+
+ Update position at time 0 : 0 : 1.23
+ Ball 0 is at Position (2200.00, 2200.00), Velocity (9.88, 9.88)
+ Ball 1 is at Position (-9900.00, -9900.00), Velocity (-98.77, -98.77)
+
+ Ball 1 collided with the wall at time: 0 : 0 : 1.23
+.
+.
+======================================
+... Testing SoccerSim valid ball set ten balls 10 second time slice...
+======================================
+
+ Initial positions:
+Ball 0 is at Position (150.00, 150.00), Velocity (10.00, 10.00)
+Ball 1 is at Position (100.00, 100.00), Velocity (-100.00, -100.00)
+Ball 2 is at Position (200.00, 200.00), Velocity (200.00, 200.00)
+Ball 3 is at Position (250.00, 250.00), Velocity (-110.00, -110.00)
+Ball 4 is at Position (20.00, 20.00), Velocity (1.00, 1.00)
+Ball 5 is at Position (50.00, 50.00), Velocity (-5.00, -5.00)
+Ball 6 is at Position (-100.00, -100.00), Velocity (200.00, 200.00)
+Ball 7 is at Position (-200.00, -200.00), Velocity (300.00, 300.00)
+Ball 8 is at Position (-110.00, -110.00), Velocity (20.00, 20.00)
+Ball 9 is at Position (1.00, 1.00), Velocity (50.00, 50.00)
+
+ Update position at time 0 : 0 : 10.00
+ Ball 0 is at Position (1650.00, 1650.00), Velocity (9.00, 9.00)
+ Ball 1 is at Position (-9900.00, -9900.00), Velocity (-90.00, -90.00)
+
+ Ball 1 collided with the wall at time: 0 : 0 : 10.00
+.
+.
+======================================
+... End of SoccerSim Testing...
+======================================
