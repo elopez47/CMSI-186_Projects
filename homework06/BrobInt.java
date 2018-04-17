@@ -29,7 +29,7 @@ public class BrobInt {
    public static final BrobInt MIN_INT  = new BrobInt( new Integer( Integer.MIN_VALUE ).toString() );
    public static final BrobInt MAX_LONG = new BrobInt( new Long( Long.MAX_VALUE ).toString() );
    public static final BrobInt MIN_LONG = new BrobInt( new Long( Long.MIN_VALUE ).toString() );
-   private static final int CHARS_THAT_FIT_IN_INT = 8;
+   public static final int CHARS_THAT_FIT_IN_INT = 8;
 
   /// These are the internal fields
    private String internalValue = null;        // internal String representation of this BrobInt
@@ -221,7 +221,43 @@ public class BrobInt {
    *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt subtractInt( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+      // set up for subtraction sign handling to decide what to do based on the following cases:
+     //    9. both signs negative, this larger abs than arg abs:      remove signs, subtract, add neg to result
+     //   10. both signs negative, this smaller abs than arg abs:     remove signs, swap a & b, subtract, result pos
+      if (this.equals(gint)) {
+         return ZERO;
+
+      } else if ( (this.compareTo(gint) > 0 ) && !(gint.internalValue.contains("-")) && !(internalValue.contains("-")) ) {
+         //simple subtraction a - b
+         return this.addInt(gint);
+
+      } else if ( (this.compareTo(gint) < 0) && !(gint.internalValue.contains("-")) && !(internalValue.contains("-")) ) {
+         // swap a & b, subtract a - b, result negative
+         return gint.addInt(new BrobInt(internalValue));
+
+      } else if ((gint.internalValue.contains("-")) && !(internalValue.contains("-"))) {
+         String arg = "";
+         int i = 0;
+         while (i < gint.internalValue.length()) {
+            if (gint.internalValue.charAt(i) != '-') {
+               arg += gint.internalValue.charAt(i);
+            }
+            i++;
+         }
+         BrobInt b = new BrobInt(arg);
+         return this.addInt(b);
+
+      } else if ((internalValue.contains("-")) && !(gint.internalValue.contains("-"))) {
+         String arg = "-";
+         int i = 0;
+         while (i < gint.internalValue.length()) {
+            arg += gint.internalValue.charAt(i);
+            i++;
+         }
+         BrobInt b = new BrobInt(arg);
+         return this.addInt(b);
+      }
+      return gint;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -230,7 +266,69 @@ public class BrobInt {
    *  @return BrobInt that is the product of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt multiply( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+      int[] a = null;
+      int[] b = null;
+      int[] c = null;
+
+      if (this.internalValue.length() > gint.internalValue.length()) {
+         a = new int[this.internalValue.length()];
+         b = new int[gint.internalValue.length()];
+         int r = 0;
+         for (int i = a.length - 1; i >= 0; i--) {
+            a[r] = Character.getNumericValue(this.internalValue.charAt(i));
+            r++;
+         }
+         r = 0;
+         for (int i = b.length - 1; i >= 0; i--) {
+            b[r] = Character.getNumericValue(gint.internalValue.charAt(i));
+            r++;
+         }
+      } else {
+         a = new int[gint.internalValue.length()];
+         b = new int[this.internalValue.length()];
+         int r = 0;
+         for (int i = b.length - 1; i >= 0; i--) {
+            b[r] = Character.getNumericValue(this.internalValue.charAt(i));
+            r++;
+         }
+         r = 0;
+         for (int i = a.length - 1; i >= 0; i--) {
+            a[r] = Character.getNumericValue(gint.internalValue.charAt(i));
+            r++;
+         }
+      }
+
+      c = new int[a.length + b.length + 1];
+
+      for ( int i = 0; i < c.length; i++) {
+         c[i] = 0;
+      }
+
+      int carry = 0;
+      int k = 0;
+
+      for ( int i = 0; i < b.length; i++) {
+         k = i;
+         for ( int j = 0; j < a.length; j++) {
+            c[k] = (a[j] * b[i]) + carry + c[k];
+            if (c[k] > 9) {
+               carry = c[k] / 10;
+               c[k] = c[k] % 10;
+            } else {
+               carry = 0;
+            }
+            k++;
+         }
+         if (carry > 0) {
+            c[k] += carry;
+            carry = 0;
+         }
+      }
+      String result = "";
+      for ( int i = c.length - 1; i >= 0; i--) {
+         result += c[i];
+      }
+      return new BrobInt(result);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -241,7 +339,42 @@ public class BrobInt {
    public BrobInt divide( BrobInt gint ) {
       throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
 
-      //Check for division by zero!
+      // BrobInt d1 = gint;
+      // BrobInt d2 = new BrobInt(internalValue);
+      // BrobInt q = ZERO;
+      // int n = 0;
+      //
+      // //throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+      // if (d1.equals(ZERO)) {
+      //    throw new IllegalArgumentException("Division by zero is undifined.");
+      // } else if (d1.equals(d2)) {
+      //    return ONE;
+      // } else if (d1.compareTo(d2) > 0) {
+      //    return ZERO;
+      // } else {
+      //    n = d1.internalValue.length();
+      //    BrobInt d3 = new BrobInt(d1.internalValue.substring(0,n));
+      //    if (d1.compareTo(d3) > 0) {
+      //       n++;
+      //       d3 = new BrobInt(d1.internalValue.substring(0,n));
+      //    }
+      //    while (n <= d2.toString().length()) {
+      //       while (d3.compareTo(d1) > 0) {
+      //          d1.subtractInt(d3);
+      //          q.addInt(ONE);
+      //       }
+      //       if (n++ == d1.toString().length()) {
+      //          break;
+      //       }
+      //       d3.multiply(TEN);
+      //       q.multiply(TEN);
+      //       d3 = new BrobInt(d3.internalValue + d2.toString().substring( n-1, n ));
+      //       n++;
+      //    }
+      //    return q;
+      // }
+      //
+      // //Check for division by zero!
 
    }
 
@@ -251,6 +384,11 @@ public class BrobInt {
    *  @return BrobInt that is the remainder of division of this BrobInt by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt remainder( BrobInt gint ) {
+      //b1.mod(b2)
+      //b3 = b1.divide(b2);
+      //b3= b3.multiply(b2);
+      //b3 = b1.subtract(b3);
+      //return (subtract.(multiply.(divide(b2)));
       throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
    }
 
@@ -323,5 +461,9 @@ public class BrobInt {
       System.out.println( "\n   You should run your tests from the BrobIntTester...\n" );
       BrobInt b = new BrobInt("12");
       System.out.println(b.toString());
+      //BrobInt a = new BrobInt("384h");
+      //System.out.println((b.reverser()).toString());
+
    }
 }
+
