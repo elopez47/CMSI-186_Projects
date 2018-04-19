@@ -221,6 +221,7 @@ public class BrobInt {
    *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt subtractInt( BrobInt gint ) {
+      String result = "";
       // set up for subtraction sign handling to decide what to do based on the following cases:
      //    9. both signs negative, this larger abs than arg abs:      remove signs, subtract, add neg to result
      //   10. both signs negative, this smaller abs than arg abs:     remove signs, swap a & b, subtract, result pos
@@ -228,12 +229,51 @@ public class BrobInt {
          return ZERO;
 
       } else if ( (this.compareTo(gint) > 0 ) && !(gint.internalValue.contains("-")) && !(internalValue.contains("-")) ) {
-         //simple subtraction a - b
-         return this.addInt(gint);
+         int[] a = intVersion;
+         int[] b = gint.intVersion;
+         int[] diff = null;
+         diff = new int[intVersion.length];
+
+         for (int i = 0; i < diff.length; i++) {
+            diff[i] = 0;
+         }
+
+         int borrow = 100000000;
+         for ( int i = 0; i < gint.intVersion.length; i++ ) {
+            diff[i] += intVersion[i] - gint.intVersion[i];
+            if (diff[i] < 0) {
+               diff[i + 1] -= 1;
+               diff[i] = borrow - diff[i];
+            }
+         }
+
+         for ( int i = diff.length - 1; i >= 0; i--) {
+            result += diff[i];
+         }
+         return new BrobInt(result);
 
       } else if ( (this.compareTo(gint) < 0) && !(gint.internalValue.contains("-")) && !(internalValue.contains("-")) ) {
-         // swap a & b, subtract a - b, result negative
-         return gint.addInt(new BrobInt(internalValue));
+         int[] a = gint.intVersion;
+         int[] b = intVersion;
+         int[] diff = null;
+         diff = new int[gint.intVersion.length];
+
+         for (int i = 0; i < diff.length; i++) {
+            diff[i] = 0;
+         }
+         int borrow = 100000000;
+         for ( int i = 0; i < intVersion.length; i++ ) {
+            diff[i] += intVersion[i] - gint.intVersion[i];
+            if (diff[i] < 0) {
+               diff[i + 1] -= 1;
+               diff[i] = borrow - diff[i];
+            }
+         }
+         for ( int i = diff.length - 1; i >= 0; i--) {
+            result += diff[i];
+         }
+
+         return new BrobInt(result);
 
       } else if ((gint.internalValue.contains("-")) && !(internalValue.contains("-"))) {
          String arg = "";
@@ -256,8 +296,19 @@ public class BrobInt {
          }
          BrobInt b = new BrobInt(arg);
          return this.addInt(b);
+      } else {
+         int[] a = intVersion;
+         int[] b = gint.intVersion;
+         int[] diff = null;
+         diff = new int[intVersion.length];
+         for ( int i = 0; i < gint.intVersion.length; i++ ) {
+            diff[i] = intVersion[i] - gint.intVersion[i];
+         }
+         for ( int i = diff.length - 1; i >= 0; i--) {
+            result += diff[i];
+         }
+         return new BrobInt(result);
       }
-      return gint;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -324,11 +375,19 @@ public class BrobInt {
             carry = 0;
          }
       }
+
+
       String result = "";
       for ( int i = c.length - 1; i >= 0; i--) {
          result += c[i];
       }
-      return new BrobInt(result);
+
+      int i = 0;
+      while (result.charAt(i) == '0') {
+         i++;
+      }
+      String r = result.substring(i, result.length());
+      return new BrobInt(r);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -337,45 +396,41 @@ public class BrobInt {
    *  @return BrobInt that is the dividend of this BrobInt divided by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt divide( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+      //throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
 
-      // BrobInt d1 = gint;
-      // BrobInt d2 = new BrobInt(internalValue);
-      // BrobInt q = ZERO;
-      // int n = 0;
-      //
-      // //throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
-      // if (d1.equals(ZERO)) {
-      //    throw new IllegalArgumentException("Division by zero is undifined.");
-      // } else if (d1.equals(d2)) {
-      //    return ONE;
-      // } else if (d1.compareTo(d2) > 0) {
-      //    return ZERO;
-      // } else {
-      //    n = d1.internalValue.length();
-      //    BrobInt d3 = new BrobInt(d1.internalValue.substring(0,n));
-      //    if (d1.compareTo(d3) > 0) {
-      //       n++;
-      //       d3 = new BrobInt(d1.internalValue.substring(0,n));
-      //    }
-      //    while (n <= d2.toString().length()) {
-      //       while (d3.compareTo(d1) > 0) {
-      //          d1.subtractInt(d3);
-      //          q.addInt(ONE);
-      //       }
-      //       if (n++ == d1.toString().length()) {
-      //          break;
-      //       }
-      //       d3.multiply(TEN);
-      //       q.multiply(TEN);
-      //       d3 = new BrobInt(d3.internalValue + d2.toString().substring( n-1, n ));
-      //       n++;
-      //    }
-      //    return q;
-      // }
-      //
-      // //Check for division by zero!
+      BrobInt d1 = gint;
+      BrobInt d2 = new BrobInt(internalValue);
+      BrobInt q = ZERO;
+      int n = 0;
 
+      if (d1.equals(ZERO)) {
+         throw new IllegalArgumentException("Division by zero is undifined.");
+      } else if (d1.equals(d2)) {
+         return ONE;
+      } else if (d1.compareTo(d2) > 0) {
+         return ZERO;
+      } else {
+         n = d1.internalValue.length();
+         BrobInt d3 = new BrobInt(d1.internalValue.substring(0,n));
+         if (d1.compareTo(d3) > 0) {
+            n++;
+            d3 = new BrobInt(d1.internalValue.substring(0,n));
+         }
+         while (n <= d2.toString().length()) {
+            while (d3.compareTo(d1) > 0) {
+               d1 = d1.subtractInt(d3);
+               q = q.addInt(ONE);
+            }
+            if (n++ == d1.toString().length()) {
+               break;
+            }
+            d3 = d3.multiply(TEN);
+            q = q.multiply(TEN);
+            d3 = new BrobInt(d3.internalValue + d2.toString().substring( n-1, n ));
+            n++;
+         }
+         return q;
+      }
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -387,8 +442,8 @@ public class BrobInt {
       //b1.mod(b2)
       //b3 = b1.divide(b2);
       //b3= b3.multiply(b2);
-      //b3 = b1.subtract(b3);
-      //return (subtract.(multiply.(divide(b2)));
+      //b3 = b1.subtractInt(b3);
+      //return b3;
       throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
    }
 
@@ -401,7 +456,22 @@ public class BrobInt {
    *        THAT was easy.....
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public int compareTo( BrobInt gint ) {
-      return (internalValue.compareTo( gint.toString() ));
+      if( internalValue.length() > gint.internalValue.length() ) {
+         return 1;
+      } else if( internalValue.length() < gint.internalValue.length() ) {
+         return (-1);
+      } else {
+         for( int i = 0; i < internalValue.length(); i++ ) {
+            Character a = new Character( internalValue.charAt(i) );
+            Character b = new Character( gint.internalValue.charAt(i) );
+            if( new Character(a).compareTo( new Character(b) ) > 0 ) {
+               return 1;
+            } else if( new Character(a).compareTo( new Character(b) ) < 0 ) {
+               return (-1);
+            }
+         }
+      }
+      return 0;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -466,4 +536,6 @@ public class BrobInt {
 
    }
 }
+
+
 
