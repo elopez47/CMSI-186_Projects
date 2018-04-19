@@ -1,11 +1,10 @@
-/*
+/**
+ * @author: Eva Lopez
+ * File name: BrobInt.java
+ * Purpose: Contains methods for large integers.
+ * Date:  2018-03-29
+ */
 
- Name: Eva Lopez
- File name: BrobInt.java
- Purpose: Contains methods for large integers.
- Date:  2018-03-29
-
-*/
 import java.util.Arrays;
 
 public class BrobInt {
