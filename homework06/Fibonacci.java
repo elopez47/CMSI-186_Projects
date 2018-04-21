@@ -80,25 +80,41 @@ public class Fibonacci {
      // NOTE: you WILL need to initialize your BrobInts to keep track of things....
 
      // NOTE: this section is just a happy notification that lets the user know to be patient.......
-     BrobInt[] fib = null;
-     fib = new BrobInt[maxCount + 1];
-     fib[0] = ZERO;
-     fib[1] = ONE;
-     fib[2] = ONE;
-     //fib[3] = TWO;
-      if( maxCount < working ) {
-         System.out.println( "\n                This may take me a while; please be patient!!\n\n" );
-         if (0 == maxCount) {
-            System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + fib[0]);
-         } else if (1 == maxCount || 2 == maxCount) {
-            System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + fib[1]);
-         } else {
-            for(int i = 2; i <= maxCount; i++) {
-               fib[i] = fib[i-1].addInt(fib[i-2]);
-            }
-            System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + fib[maxCount]);
+   //   BrobInt[] fib = null;
+   //   fib = new BrobInt[maxCount + 1];
+   //   fib[0] = ZERO;
+   //   fib[1] = ONE;
+   //   fib[2] = ONE;
 
+      if( maxCount > working ) {
+         System.out.println( "\n                This may take me a while; please be patient!!\n\n" );
+      }
+      // if (1 == maxCount) {
+      //    System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + fib[0]);
+      // } else if (2 == maxCount || 2 == maxCount) {
+      //    System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + fib[1]);
+      // } else {
+      //    for(int i = 2; i < maxCount; i++) {
+      //       fib[i] = fib[i-1].addInt(fib[i-2]);
+      //    }
+      //    System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + fib[maxCount - 1]);
+      // }
+      BrobInt b1 = new BrobInt("0");
+      BrobInt b2 = new BrobInt("1");
+      BrobInt b3 = new BrobInt("0");
+      if (1 == maxCount) {
+         System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + b1.toString());
+      } else if (2 == maxCount) {
+         System.out.println("The " + maxCount + cardinality + " number in the Fibonacci sequence is " + b2.toString());
+      } else {
+         int n = 2;
+         while( n < maxCount ) {
+            b3 = b1.addInt(b2);
+            b1 = b2;
+            b2 = b3;
+            n++;
          }
+         System.out.println(b3.toString());
       }
 
       System.exit( 0 );
