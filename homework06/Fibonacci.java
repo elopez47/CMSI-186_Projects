@@ -1,5 +1,5 @@
-/**
- * @author: Eva Lopez
+/*
+ * Name: Eva Lopez
  * File name: Fibonacci.java
  * Purpose: Finds nth Fibonacci number with 0 as the first number in the sequence.
  * Date:  2018-03-29
