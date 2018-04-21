@@ -1,10 +1,9 @@
-/**
- * @author: Eva Lopez
+/*
+ * Name: Eva Lopez
  * File name: BrobInt.java
  * Purpose: Contains methods for large integers.
  * Date:  2018-03-29
  */
-
 import java.util.Arrays;
 
 public class BrobInt {
@@ -263,10 +262,6 @@ public class BrobInt {
          int borrow = 100000000;
          for ( int i = 0; i < intVersion.length; i++ ) {
             diff[i] += intVersion[i] - gint.intVersion[i];
-            if (diff[i] < 0) {
-               diff[i + 1] -= 1;
-               diff[i] = borrow - diff[i];
-            }
          }
          for ( int i = diff.length - 1; i >= 0; i--) {
             result += diff[i];
@@ -403,29 +398,29 @@ public class BrobInt {
       int n = 0;
 
       if (d1.equals(ZERO)) {
-         throw new IllegalArgumentException("Division by zero is undifined.");
+         throw new IllegalArgumentException("Division by zero is undefined.");
       } else if (d1.equals(d2)) {
          return ONE;
       } else if (d1.compareTo(d2) > 0) {
          return ZERO;
       } else {
          n = d1.internalValue.length();
-         BrobInt d3 = new BrobInt(d1.internalValue.substring(0,n));
+         BrobInt d3 = new BrobInt(d1.internalValue.substring(0, n - 1));
          if (d1.compareTo(d3) > 0) {
             n++;
-            d3 = new BrobInt(d1.internalValue.substring(0,n));
+            d3 = new BrobInt(d1.internalValue.substring(0, n - 1));
          }
          while (n <= d2.toString().length()) {
             while (d3.compareTo(d1) > 0) {
-               d1 = d1.subtractInt(d3);
-               q = q.addInt(ONE);
+               d3.subtractInt(d1);
+               q.addInt(ONE);
             }
             if (n++ == d1.toString().length()) {
                break;
             }
-            d3 = d3.multiply(TEN);
-            q = q.multiply(TEN);
-            d3 = new BrobInt(d3.internalValue + d2.toString().substring( n-1, n ));
+            d3.multiply(TEN);
+            q.multiply(TEN);
+            d3 = new BrobInt(d3.internalValue + d2.toString().substring(n - 2, n - 1));
             n++;
          }
          return q;
@@ -455,17 +450,31 @@ public class BrobInt {
    *        THAT was easy.....
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public int compareTo( BrobInt gint ) {
+
+     // handle the signs here
+      if( 1 == sign && 0 == gint.sign ) {
+         return -1;
+      } else if( 0 == sign && 1 == gint.sign ) {
+         return 1;
+      }
+
+     // the signs are the same at this point
+     // check the length and return the appropriate value
+     //   1 means this is longer than gint, hence larger
+     //  -1 means gint is longer than this, hence larger
       if( internalValue.length() > gint.internalValue.length() ) {
          return 1;
       } else if( internalValue.length() < gint.internalValue.length() ) {
          return (-1);
+
+     // otherwise, they are the same length, so compare absolute values
       } else {
          for( int i = 0; i < internalValue.length(); i++ ) {
-            Character a = new Character( internalValue.charAt(i) );
-            Character b = new Character( gint.internalValue.charAt(i) );
-            if( new Character(a).compareTo( new Character(b) ) > 0 ) {
+            Character a = Character.valueOf( internalValue.charAt(i) );
+            Character b = Character.valueOf( gint.internalValue.charAt(i) );
+            if( Character.valueOf(a).compareTo( Character.valueOf(b) ) > 0 ) {
                return 1;
-            } else if( new Character(a).compareTo( new Character(b) ) < 0 ) {
+            } else if( Character.valueOf(a).compareTo( Character.valueOf(b) ) < 0 ) {
                return (-1);
             }
          }
@@ -535,6 +544,3 @@ public class BrobInt {
 
    }
 }
-
-
-
