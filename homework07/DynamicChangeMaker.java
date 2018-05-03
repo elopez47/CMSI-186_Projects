@@ -107,7 +107,6 @@ public class DynamicChangeMaker {
             }
          }
       }
-      System.out.println(table[rowCount - 1][columnCount - 1]);
       return table[rowCount - 1][columnCount - 1];
    }
 
