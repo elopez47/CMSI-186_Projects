@@ -128,9 +128,11 @@ public class DynamicChangeMaker {
             denominations[i] = Integer.parseInt(d[i]);
          }
          validateDenominationArgument(denominations);
-
+         Tuple dt = new Tuple (denominations);
          int target = Integer.parseInt(args[1]);
          validateTargetArgument(target);
+
+         System.out.println("Using the denominations: " + dt.toString() + " to get the targetted amount of: " + target + ", the optimal solution is: ");
 
          System.out.println(makeChangeWithDynamicProgramming(denominations, target));
 
