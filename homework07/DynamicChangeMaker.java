@@ -26,7 +26,7 @@ public class DynamicChangeMaker {
       for ( int i = 0; i < denominations.length; i++ ) {
          for ( int j = 0; j < i; j++ ) {
             if ((denominations[i] == denominations[j]) || denominations[i] < 1) {
-               throw new IllegalArgumentException("BAD DATA and IMPOSSIBLE: The arguements must be disticnt and positive integers.");
+               throw new IllegalArgumentException(" IMPOSSIBLE BAD DATA: The denominations must be disticnt positive integers.");
             }
          }
       }
@@ -43,7 +43,7 @@ public class DynamicChangeMaker {
    */
    public static boolean validateTargetArgument( int target ) throws IllegalArgumentException {
       if (target < 1) {
-         throw new IllegalArgumentException("BAD DATA and IMPOSSIBLE: The targetted amount must be a positive integer.");
+         throw new IllegalArgumentException(" IMPOSSIBLE BAD DATA: The targetted amount must be a positive integer.");
       }
       return true;
    }
@@ -64,17 +64,15 @@ public class DynamicChangeMaker {
       int columnCount = target + 1;
 
       Tuple[][] table = new Tuple[rowCount][columnCount];
-      Tuple ZEROTUPLE = new Tuple(denominations.length);
-
 
       for ( int i = 0; i < rowCount; i ++ ) {
-         int j = 0;
-         for ( j = 0; j < columnCount; j++ ) {
+         for ( int j = 0; j < columnCount; j++ ) {
             table[i][j] = new Tuple(denominations.length);
-            // Makes all tuples at column zero equal to zero
-            if ( j == 0 ) {
 
-            } else if ( denominations[i] > j ) {
+            if ( j == 0 ) {
+               table[i][j] = new Tuple(denominations.length);
+
+            } else if ( (denominations[i]) > j ) {
                table[i][j] = Tuple.IMPOSSIBLE;
 
                if (i != 0) {
@@ -83,29 +81,33 @@ public class DynamicChangeMaker {
                   }
                }
 
-               // Can take one out of j
+            // Can take one out of j
             } else {
+               
                (table[i][j]).setElement(i, 1);
-               int difference = j - denominations[i];
-                  if ((table[i][difference]).isImpossible()) {
-                     table[i][j] = Tuple.IMPOSSIBLE;
-                  } else {
-                     table[i][j] = (table[i][difference]).add(table[i][j]);
-                     // table[i][j] += table[i][j - denominations[i]];
-                  }
+
+               if ((table[i][j - denominations[i]]).isImpossible()) {
+                  table[i][j] = Tuple.IMPOSSIBLE;
+               } else {
+                  table[i][j] = (table[i][j - denominations[i]]).add(table[i][j]);
+
+               }
 
                if (i != 0) {
-                  if (((table[i][j]).isImpossible()) && ((table[i-1][j]).isImpossible())) {
-                     table[i][j] = Tuple.IMPOSSIBLE;
-                  } else if (!(table[i - 1][j]).isImpossible()) {
-                     if ((table[i - 1][j]).total() < (table[i][j]).total()) {
-                        table[i][j] = table[i - 1][j];
+                  if (table[i - 1 ][j].isImpossible()) {
+
+                  } else if ( !((table[i - 1][j]).isImpossible()) && !((table[i][j]).isImpossible()) ) {
+                     if ((table[i-1][j]).total() <= (table[i][j]).total()) {
+                        table[i][j] = table[i - 1][j].add(new Tuple(denominations.length));
                      }
+                  } else {
+                     table[i][j] = table[i - 1][j];
                   }
                }
             }
          }
       }
+      System.out.println(table[rowCount - 1][columnCount - 1]);
       return table[rowCount - 1][columnCount - 1];
    }
 
