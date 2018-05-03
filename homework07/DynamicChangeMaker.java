@@ -83,7 +83,7 @@ public class DynamicChangeMaker {
 
             // Can take one out of j
             } else {
-               
+
                (table[i][j]).setElement(i, 1);
 
                if ((table[i][j - denominations[i]]).isImpossible()) {
@@ -97,8 +97,10 @@ public class DynamicChangeMaker {
                   if (table[i - 1 ][j].isImpossible()) {
 
                   } else if ( !((table[i - 1][j]).isImpossible()) && !((table[i][j]).isImpossible()) ) {
-                     if ((table[i-1][j]).total() <= (table[i][j]).total()) {
+                     if ((table[i - 1][j]).total() < (table[i][j]).total()) {
                         table[i][j] = table[i - 1][j].add(new Tuple(denominations.length));
+                     } else {
+                        table[i][j] = table[i][j];
                      }
                   } else {
                      table[i][j] = table[i - 1][j];
